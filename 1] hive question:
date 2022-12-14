@@ -1,0 +1,16 @@
+Hive
+Q1
+
+create table customer(
+cust_id int,
+fname String,
+lname String,
+age int,
+profession string)
+row format delimited
+fields terminated by ','
+stored as textfile;
+
+load data local inpath 'custs.txt' overwrite into table customer
+
+select count(cust_id) as count, profession from customer group by profession;
