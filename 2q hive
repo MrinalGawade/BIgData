@@ -1,0 +1,19 @@
+Q2
+
+create table tranx (
+txnid int,
+txndate string,
+cust_id int,
+amount double,
+category string,
+product string,
+city string,
+state string,
+spendby string)
+row format delimited
+fields terminated by ','
+stored as text file;
+
+load data local inpath 'txns1.txt' overwrite into table tranx;
+
+select sum(amount) as total,product from tranx group by product order by total desc limit 10;
